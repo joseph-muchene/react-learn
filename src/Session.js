@@ -59,6 +59,8 @@ function App() {
 
   return (
     <div className="App">
+      <h1 style={{ textAlign: "center" }}>React 1</h1>
+
       {/* The conditional (ternary) operator is the only JavaScript operator that takes three operands: a condition followed by a question mark (?), then an expression to execute if the condition is truthy followed by a colon (:), and finally the expression to execute if the condition is falsy. This operator is frequently used as an alternative to an if...else statement. */}
       <h1>{products.length < 1 ? "No products" : ""}</h1>
 
@@ -76,19 +78,21 @@ function App() {
       
       
       */}
-      {products.map((product) => (
-        <div
-          style={{
-            backgroundColor: product.price > 100 ? "red" : "black",
-            color: "white",
-          }}
-        >
-          {/* <h1>{product.name === "shoes" ? "lovely shoes" : "not shoes"}</h1> */}
-          <p>{product.description}</p>
+      <>
+        {products.map((product) => (
+          <div
+            style={{
+              backgroundColor: product.price > 100 ? "#333" : "#d45d13",
+              color: "white",
+              borderRadius: "5px",
+            }}
+          >
+            {/* <h1>{product.name === "shoes" ? "lovely shoes" : "not shoes"}</h1> */}
+            <p>{product.description}</p>
 
-          <h2>{product.price}</h2>
+            <h2>{product.price}</h2>
 
-          {/* 
+            {/* 
           when a function receives  a parameter.. 
 
       
@@ -99,22 +103,24 @@ function App() {
 
 
           */}
-          <button onClick={() => handleDelete(product.id)}>
-            Delete product
-          </button>
-        </div>
-      ))}
-
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          ref={nameRef}
-          name="name"
-          placeholder="name of product"
-        />
-        <input type="text" name="description" ref={descriptionRef} />
-        <input type="submit" />
-      </form>
+            <button onClick={() => handleDelete(product.id)}>
+              Delete product
+            </button>
+          </div>
+        ))}
+      </>
+      <div>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            ref={nameRef}
+            name="name"
+            placeholder="name of product"
+          />
+          <input type="text" name="description" ref={descriptionRef} />
+          <input type="submit" />
+        </form>
+      </div>
     </div>
   );
 }
