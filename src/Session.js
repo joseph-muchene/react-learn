@@ -3,6 +3,7 @@ import React, { useState, useRef } from "react";
 import "./App.css";
 function App() {
   // set all the products
+  const [active, setActive] = useState(false);
   const [products, setProducts] = useState([
     {
       id: "1",
@@ -57,6 +58,13 @@ function App() {
     setProducts(products.filter((product) => product.id !== id));
   };
 
+  console.log(active);
+
+  const handleActive = (id) => {
+    setActive(!active);
+    console.log(id);
+  };
+
   return (
     <div className="App">
       <h1 style={{ textAlign: "center" }}>React 1</h1>
@@ -81,6 +89,7 @@ function App() {
       <>
         {products.map((product) => (
           <div
+            onClick={() => handleActive(product.id)}
             style={{
               backgroundColor: product.price > 100 ? "#333" : "#d45d13",
               color: "white",
